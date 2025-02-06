@@ -1,14 +1,14 @@
-import { createMemoryHistory, createRouter } from "vue-router";
+import { createWebHistory, createRouter } from "vue-router";
 import PageLogin from "../pages/PageLogin.vue";
 import ComponentHome from "../components/ComponentHome.vue";
 
 const routes = [
-  { path: '/', component: ComponentHome },
-  { path: '/login', component: PageLogin }
+  { path: '/home', component: ComponentHome },
+  { path: '/', component: PageLogin }
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 })
 
