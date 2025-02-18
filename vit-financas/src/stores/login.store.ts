@@ -2,27 +2,29 @@ import { defineStore } from 'pinia'
 import { useForm } from 'vee-validate'
 import { object, string } from 'yup'
 
-export interface TipoUser {
+export interface TypeUser {
   user: string,
-  password: string
+  password: string,
 }
 
-const schema = object().shape({
+const schema_login = object().shape({
   user: string().required().label('usuário'),
   password: string().required().label('senha')
 })
 
 export const LoginStore = defineStore('store_login', () => {
-  const { values, defineField, errors } = useForm<TipoUser>({
+  const { values, defineField, errors, resetForm } = useForm<TypeUser>({
     initialValues: {
       user: '',
       password: ''
     },
-    validationSchema: schema
+    validationSchema: schema_login
   })
 
   const [user, userAlt] = defineField('user')
   const [password, passwordAlt] = defineField('password')
+
+
 
   return {
     errors,
@@ -30,6 +32,7 @@ export const LoginStore = defineStore('store_login', () => {
     user,
     userAlt,
     password,
-    passwordAlt
+    passwordAlt,
+    resetForm,
   }
 })

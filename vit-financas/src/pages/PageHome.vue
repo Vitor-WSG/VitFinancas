@@ -1,20 +1,15 @@
 <template>
-  <div class="bg-green-1">
-    <section>
-      <div class="col-12 flex justify-center">
-        <h4 style="margin-bottom: 0">Welcome</h4>
-      </div>
-
-      <div class="col-12 flex justify-center">
-        <h1 style="margin-bottom: 0">VitFinances</h1>
-      </div>
-
-      <div class="col-12 flex justify-center">
-        <h5 style="margin-top: 0">The best way to get control your finances</h5>
-      </div>
+  <div
+    class="bg-green-1 q-pa-xl flex column items-center"
+    style="width: 100%; height: 100vh"
+  >
+    <section class="text-center">
+      <h4>Welcome</h4>
+      <h1>VitFinances</h1>
+      <h5>The best way to get control your finances</h5>
     </section>
 
-    <div class="col-12 flex justify-center q-gutter-lg q-mt-xl">
+    <div class="q-gutter-lg q-mt-xl">
       <q-btn
         label="Sing In"
         unelevated
@@ -36,15 +31,15 @@
 </template>
 
 <script setup lang="ts">
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 
 const router = useRouter();
-const route = useRouter();
 
 function goToLogin() {
   router.push({ path: "login" });
 }
 function goToCadastro() {
   router.push({ path: "cadastro" });
+  
 }
 </script>
