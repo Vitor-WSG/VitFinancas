@@ -3,10 +3,7 @@
     class="bg-green-1 q-pa-xl column items-center"
     style="width: 100%; height: 100vh"
   >
-    <q-card
-      class="q-gutter-lg"
-      style="min-width: 30%;"
-    >
+    <q-card class="q-gutter-lg" style="min-width: 30%">
       <q-card-section>
         <div class="text-h6">Login</div>
         <div class="text-subtitle2">Enter your login details</div>
@@ -20,10 +17,9 @@
             color="green"
             rounded
             standout
-            v-model="store_login.user"
-            v-bind="store_login.userAlt"
-            :error="!!store_login.errors.user"
-            :error-message="store_login.errors.user"
+            v-model="store_login.user.value"
+            :error="!!store_login.user.errorMessage"
+            :error-message="store_login.user.errorMessage"
           />
 
           <q-input
@@ -65,7 +61,7 @@ const store_login = reactive(LoginStore());
 const router = useRouter();
 
 function onSubmit() {
-  console.log("submit");
+  store_login.onSubmit();
 }
 
 function onReset() {
