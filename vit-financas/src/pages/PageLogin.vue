@@ -17,9 +17,10 @@
             color="green"
             rounded
             standout
-            v-model="store_login.user.value"
-            :error="!!store_login.user.errorMessage"
-            :error-message="store_login.user.errorMessage"
+            v-model="store_login.user"
+            v-bind="store_login.userAlt"
+            :error="!!store_login.errors.user"
+            :error-message="store_login.errors.user"
           />
 
           <q-input
@@ -55,13 +56,16 @@
 import { reactive } from "vue";
 import { LoginStore } from "../stores/login.store";
 import { useRouter } from "vue-router";
+import { useAuthStore } from "../stores/useAuthStore";
 import "../styles/style-login.css";
 
+const authStore = useAuthStore();
 const store_login = reactive(LoginStore());
 const router = useRouter();
 
 function onSubmit() {
   store_login.onSubmit();
+  authStore.login(store_login.user, store_login.password);
 }
 
 function onReset() {

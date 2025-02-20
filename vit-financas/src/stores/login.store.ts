@@ -13,7 +13,7 @@ const schema_login = object().shape({
 })
 
 export const LoginStore = defineStore('store_login', () => {
-  const { values, errors, resetForm, submitForm, handleSubmit } = useForm<TypeUser>({
+  const { values, defineField, errors, resetForm, submitForm, handleSubmit } = useForm<TypeUser>({
     initialValues: {
       user: '',
       password: ''
@@ -21,8 +21,8 @@ export const LoginStore = defineStore('store_login', () => {
     validationSchema: schema_login
   })
 
-  const user = useField('user')
-  const password = useField('password')
+  const [user, userAlt] = defineField('user')
+  const [password, passwordAlt] = defineField('password')
 
   const onSubmit = handleSubmit(async (values) => await console.log(values))
 
@@ -31,7 +31,9 @@ export const LoginStore = defineStore('store_login', () => {
     errors,
     values,
     user,
+    userAlt,
     password,
+    passwordAlt,
     resetForm,
     submitForm,
     onSubmit

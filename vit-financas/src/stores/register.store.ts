@@ -15,13 +15,15 @@ const schema_register = object().shape({
 })
 
 export const RegisterLoginStore = defineStore('store_register_login', () => {
-  const { values, errors, defineField, resetForm, submitForm } = useForm<TypeRegisterLogin>({
+  const { values, errors, defineField, resetForm, submitForm, handleSubmit } = useForm<TypeRegisterLogin>({
     validationSchema: schema_register
   })
 
   const [name, nameAlt] = defineField('name')
   const [lastName, lastNameAlt] = defineField('lastName')
   const [passwordRegister, passwordRegisterAlt] = defineField('passwordRegister')
+
+  const onSubmit = handleSubmit(async (values) => await console.log(values))
 
   return {
     name,
@@ -34,5 +36,6 @@ export const RegisterLoginStore = defineStore('store_register_login', () => {
     errors,
     resetForm,
     submitForm,
+    onSubmit,
   }
 })

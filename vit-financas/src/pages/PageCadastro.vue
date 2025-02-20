@@ -75,7 +75,7 @@ const store_login_register = reactive(RegisterLoginStore());
 const router = useRouter();
 
 function onSubmit() {
-  store_login_register.submitForm();
+  store_login_register.onSubmit();
 }
 
 function onReset() {
