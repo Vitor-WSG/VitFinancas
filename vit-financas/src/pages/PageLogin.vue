@@ -63,9 +63,17 @@ const authStore = useAuthStore();
 const store_login = reactive(LoginStore());
 const router = useRouter();
 
-function onSubmit() {
+async function onSubmit() {
   store_login.onSubmit();
-  authStore.login(store_login.user, store_login.password);
+  const isAutenticate = await authStore.login(
+    store_login.user,
+    store_login.password
+  );
+  if (isAutenticate) {
+    router.push("/dashboard");
+  } else {
+    alert("Dados inválidos");
+  }
 }
 
 function onReset() {
