@@ -32,14 +32,20 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
+import { onMounted } from "vue";
+import { useAuthStore } from "../stores/useAuthStore";
 
 const router = useRouter();
+const auth = useAuthStore();
 
 function goToLogin() {
   router.push({ path: "login" });
 }
 function goToCadastro() {
   router.push({ path: "cadastro" });
-  
 }
+
+onMounted(() => {
+  auth.logout();
+});
 </script>

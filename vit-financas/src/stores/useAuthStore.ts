@@ -15,9 +15,12 @@ export const useAuthStore = defineStore('auth', {
         this.user = { email };
         this.token = fakeToken;
 
-        localStorage.setItem("user", JSON.stringify(this.user))
-        localStorage.setItem("user", this.token)
-
+        try {
+          localStorage.setItem("user", JSON.stringify(this.user))
+          localStorage.setItem("token", this.token)
+        } catch (error) {
+          this.logout()
+        }
         return true
       }
       return false
@@ -29,5 +32,6 @@ export const useAuthStore = defineStore('auth', {
       localStorage.removeItem("token")
       localStorage.removeItem("user")
     }
-  }
+  },
+
 })

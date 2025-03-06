@@ -10,7 +10,7 @@
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset">
-        <q-card-section>
+        <q-card-section class="q-gutter-md">
           <q-input
             label="* Name"
             outlined

@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
   const authStore = useAuthStore();
 
   if (to.meta.requiresAuth && !authStore.token) {
-    next('/dashboard')
+    next('/login')
   } else {
     next()
   }

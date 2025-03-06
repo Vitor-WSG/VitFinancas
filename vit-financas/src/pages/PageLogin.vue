@@ -10,7 +10,7 @@
       </q-card-section>
 
       <q-form @submit="onSubmit" @reset="onReset">
-        <q-card-section>
+        <q-card-section class="q-gutter-md">
           <q-input
             label="User"
             outlined
@@ -50,10 +50,32 @@
       </q-form>
     </q-card>
   </div>
+
+  <q-dialog v-model="singinAlert">
+    <q-card>
+      <q-card-section class="row items-center">
+        <q-avatar icon="warning" color="green" text-color="white" />
+        <span class="q-ml-sm"
+          >User not found, please check your credentials or register.</span
+        >
+      </q-card-section>
+
+      <q-card-actions align="right">
+        <q-btn
+          label="Sing Up"
+          unelevated
+          rounded
+          color="green"
+          @click="goToCadastro"
+        />
+        <q-btn label="Cancel" outline rounded color="green" v-close-popup />
+      </q-card-actions>
+    </q-card>
+  </q-dialog>
 </template>
 
 <script setup lang="ts">
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
 import { LoginStore } from "../stores/login.store";
 import { useRouter } from "vue-router";
 import { useAuthStore } from "../stores/useAuthStore";
@@ -62,6 +84,7 @@ import "../styles/style-login.css";
 const authStore = useAuthStore();
 const store_login = reactive(LoginStore());
 const router = useRouter();
+const singinAlert = ref<boolean>(false);
 
 async function onSubmit() {
   store_login.onSubmit();
@@ -72,13 +95,17 @@ async function onSubmit() {
   if (isAutenticate) {
     router.push("/dashboard");
   } else {
-    alert("Dados inválidos");
+    singinAlert.value = true;
   }
 }
 
 function onReset() {
   router.back();
   store_login.resetForm();
+}
+
+function goToCadastro() {
+  router.push({ path: "cadastro" });
 }
 </script>
 
