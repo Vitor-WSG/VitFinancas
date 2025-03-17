@@ -25,6 +25,7 @@
 
           <q-input
             label="Password"
+            type="password"
             outlined
             color="green"
             rounded

@@ -67,10 +67,13 @@
       </q-card-section>
     </q-card>
   </div>
+  <q-page>
+    <ChartComponent/>
+  </q-page>
 </template>
 
 <script setup lang="ts">
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 let showValues = ref(false);
 let allValues = ref<string>("SHOW ALL VALUES");
