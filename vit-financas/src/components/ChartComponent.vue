@@ -1,8 +1,8 @@
 <template>
   <div>
     <apexchart
-      type="line"
-      height="350"
+      type="bar"
+      height="380"
       :options="chartOptions"
       :series="chartSeries"
     />
@@ -19,10 +19,41 @@ export default defineComponent({
     return {
       chartOptions: {
         chart: { id: "vue-chart" },
-        xaxis: { categories: ["Jan", "Feb", "Mar", "Apr", "May"] },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "July",
+            "June",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+        },
         stroke: { curve: "smooth" },
+        fill: {
+          colors: ["red", "green", "#9C27B0"],
+        },
       },
-      chartSeries: [{ name: "Vendas", data: [30, 50, 35, 60, 70] }],
+      chartSeries: [
+        {
+          name: "Expenses",
+          data: [30, 50, 35, 60, 70, 45, 66, 43, 312, 45.67, 89],
+        },
+        {
+          name: "Revenues",
+          data: [30, 50, 35, 60, 70, 45, 66, 43, 312, 45.67, 89],
+        },
+        {
+          name: "Credit Card",
+          data: [30, 50, 35, 60, 70, 45, 66, 43, 312, 45.67, 89],
+        },
+      ],
     };
   },
 });

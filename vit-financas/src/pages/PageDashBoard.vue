@@ -67,13 +67,12 @@
       </q-card-section>
     </q-card>
   </div>
-  <q-page>
-    <ChartComponent/>
-  </q-page>
+  <ChartComponent />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import ChartComponent from "../components/ChartComponent.vue";
 
 let showValues = ref(false);
 let allValues = ref<string>("SHOW ALL VALUES");
@@ -83,3 +82,17 @@ function valuesShow() {
   allValues.value = showValues.value ? "HIDE ALL VALUES" : "SHOW ALL VALUES";
 }
 </script>
+
+<!-- <template>
+  <h2>Dashboard de Vendas</h2>
+  <ChartComponent />
+</template>
+
+<script>
+import { defineComponent } from "vue";
+import ChartComponent from "../components/ChartComponent.vue";
+
+export default defineComponent({
+  components: { ChartComponent },
+});
+</script> -->
