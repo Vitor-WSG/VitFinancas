@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { Quasar } from 'quasar'
+import { Quasar, Dialog } from 'quasar'
 import { createPinia } from 'pinia'
 import VueApexCHarts from 'vue3-apexcharts'
 import router from './router'
@@ -16,7 +16,9 @@ app.use(pinia)
 app.use(VueApexCHarts)
 
 app.use(Quasar, {
-  plugins: {}
+  plugins: {
+    Dialog
+  }
 })
 
 app.mount('#app')
