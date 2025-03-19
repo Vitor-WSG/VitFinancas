@@ -1,34 +1,54 @@
 <template>
   <q-dialog ref="dialogRef" @hide="onDialogHide">
-    <q-card class="flex justify-center q-gutter-md">
-      <h3>{{ props.release_title }}</h3>
-      <q-input rounded outlined v-model="text" label="Description" />
-      <q-input
-        rounded
-        outlined
-        v-model="text"
-        label="Value"
-        fill-mask="0"
-        reverse-fill-mask
-        input-class="text-right"
-        hint="0.00"
-      />
+    <q-card class="flex justify-center">
+      <q-card-section>
+        <span>Lançamentos</span>
+      </q-card-section>
+
+      <q-card-section class="row flex justify-center q-gutter-md">
+        <q-input
+          class="col-5"
+          rounded
+          outlined
+          v-model="text"
+          label="Description"
+          color="green"
+        />
+        <q-input
+          class="col-5"
+          rounded
+          outlined
+          v-model="text"
+          label="Value (R$)"
+          color="green"
+        />
+        <q-input
+          class="col-5"
+          rounded
+          outlined
+          v-model="date"
+          type="date"
+          hint="Due date"
+        />
+        <q-radio
+          class="col-5"
+          color="green"
+          v-model="shape"
+          checked-icon="task_alt"
+          unchecked-icon="panorama_fish_eye"
+          val="line"
+          label="Effective"
+        />
+      </q-card-section>
+
       <q-card-actions class="flex justify-end q-ma-md">
+        <q-btn color="green" label="Save" rounded @click="onOKClick" />
         <q-btn
           color="green"
-          label="Save"
-          rounded
-          outline
-          @click="onOKClick"
-          icon="add"
-        />
-        <q-btn
-          color="primary"
           label="Cancel"
           rounded
           outline
           @click="onDialogCancel"
-          icon="close"
         />
       </q-card-actions>
     </q-card>

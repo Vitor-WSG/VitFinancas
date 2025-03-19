@@ -32,11 +32,11 @@
 
 <script setup lang="ts">
 import { useRouter } from "vue-router";
-import { onMounted } from "vue";
+import { onMounted, reactive } from "vue";
 import { useAuthStore } from "../stores/useAuthStore";
 
-const router = useRouter();
-const auth = useAuthStore();
+const router = reactive(useRouter());
+const auth = reactive(useAuthStore());
 
 function goToLogin() {
   router.push({ path: "login" });

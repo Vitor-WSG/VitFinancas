@@ -100,12 +100,12 @@ async function onSubmit() {
   }
 }
 
-function onReset() {
+function onReset(): void {
   router.back();
   store_login.resetForm();
 }
 
-function goToCadastro() {
+function goToCadastro(): void {
   router.push({ path: "cadastro" });
 }
 </script>

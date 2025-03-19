@@ -184,7 +184,7 @@ import ChartComponent from "../components/ChartComponent.vue";
 import AddCountsComponent from "../components/AddCountsComponent.vue";
 import { useQuasar } from "quasar";
 
-const columns = ref<any>([
+const columns = ref<Array<object>>([
   {
     name: "name",
     required: true,
@@ -195,10 +195,10 @@ const columns = ref<any>([
     sortable: true,
   },
   {
-    name: "calories",
+    name: "values",
     align: "center",
     label: "Values(R$)",
-    field: "calories",
+    field: "values",
     sortable: true,
   },
   { name: "fat", label: "Fat (g)", field: "fat", sortable: true },
@@ -221,7 +221,7 @@ const columns = ref<any>([
   },
 ]);
 
-const rows = ref<any>([
+const rows = ref<Array<object>>([
   {
     name: "Frozen Yogurt",
     calories: 159,
@@ -246,8 +246,8 @@ const rows = ref<any>([
 
 const showTable = ref<boolean>(false);
 const $q = useQuasar();
-const title_release = ref("");
-const color_release = ref("");
+const title_release = ref<string>("");
+const color_release = ref<string>("");
 
 $q.dialog({
   component: AddCountsComponent,
@@ -267,7 +267,7 @@ $q.dialog({
     console.log("Called on OK or Cancel");
   });
 
-const option_months = [
+const option_months = ref<Array<string>>([
   "January",
   "February",
   "March",
@@ -280,7 +280,7 @@ const option_months = [
   "October",
   "November",
   "December",
-];
+]);
 
 const current_month = ref<string>("");
 let showValues = ref<boolean>(false);
@@ -288,7 +288,7 @@ let allValues = ref<string>("show all values");
 let showChart = ref<boolean>(true);
 let valuesChart = ref<string>("show chart");
 
-function ShowAddValues(title: string, color: string) {
+function ShowAddValues(title: string, color: string): void {
   (title_release.value = title), (color_release.value = color);
 }
 
@@ -302,7 +302,7 @@ function chartShow(): void {
   valuesChart.value = showChart.value ? "hide chart" : "show chart";
 }
 
-function tableShow() {
+function tableShow(): void {
   showTable.value = !showTable.value;
 }
 </script>

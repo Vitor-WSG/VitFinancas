@@ -72,7 +72,7 @@ import "../styles/style-login.css";
 import { useRouter } from "vue-router";
 
 const store_login_register = reactive(RegisterLoginStore());
-const router = useRouter();
+const router = reactive(useRouter());
 
 function onSubmit() {
   store_login_register.onSubmit();
