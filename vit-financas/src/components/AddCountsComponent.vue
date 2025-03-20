@@ -1,6 +1,6 @@
 <template>
   <q-dialog ref="dialogRef" @hide="onDialogHide">
-    <q-card class="flex justify-center">
+    <q-card>
       <q-card-section>
         <span>Lançamentos</span>
       </q-card-section>
@@ -22,6 +22,24 @@
           label="Value (R$)"
           color="green"
         />
+        <q-select
+          rounded
+          outlined
+          v-model="model"
+          :options="options"
+          label="Category"
+          class="col-5"
+          color="green"
+        />
+        <q-select
+          rounded
+          outlined
+          v-model="model"
+          :options="options"
+          label="Sub-Category"
+          class="col-5"
+          color="green"
+        />
         <q-input
           class="col-5"
           rounded
@@ -29,6 +47,7 @@
           v-model="date"
           type="date"
           hint="Due date"
+          color="green"
         />
         <q-radio
           class="col-5"
@@ -41,7 +60,7 @@
         />
       </q-card-section>
 
-      <q-card-actions class="flex justify-end q-ma-md">
+      <q-card-actions class="justify-end q-ma-md">
         <q-btn color="green" label="Save" rounded @click="onOKClick" />
         <q-btn
           color="green"
